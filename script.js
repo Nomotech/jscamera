@@ -6,8 +6,8 @@
 // see https://opensource.org/licenses/MIT
 // ============================================
 
-const WIDTH  = 640
-const HEIGHT = 480
+const WIDTH  = 640/2
+const HEIGHT = 480/2
 
 // 一度画像を取り込むcanvas
 const dataCanvas = document.createElement('canvas')
@@ -52,7 +52,8 @@ let loop = () => {
   imageData = dataCtx.getImageData(0, 0, WIDTH, HEIGHT)
 
   // 画像処理
-  threshold(imageData.data, 100)
+  //threshold(imageData.data, 100)
+	reversal(imageData.data)
 
   ctx.save()
   ctx.globalAlpha = 1

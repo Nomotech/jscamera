@@ -21,3 +21,17 @@ let threshold = (data, t) => {
     }
   }
 }
+
+let reversal = (data) => {
+  for(let y = 0; y < HEIGHT; y++) {
+    for(let x = 0; x < WIDTH; x++) {
+        let index = (x + y * WIDTH) * 4
+        let r = data[index + 0]
+        let g = data[index + 1]
+        let b = data[index + 2]
+        data[index + 0] = 255 - r
+        data[index + 1] = 255 - g
+        data[index + 2] = 255 - b
+    }
+  }
+}
