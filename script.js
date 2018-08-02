@@ -20,7 +20,6 @@ const canvas = document.getElementById('canvas')
 canvas.width = WIDTH
 canvas.height = HEIGHT
 const ctx = canvas.getContext('2d')
-console.clear();
 
 // -------------------------< cameraの準備 >-------------------------
 let video = document.getElementById('camera');
@@ -52,8 +51,7 @@ let loop = () => {
   imageData = dataCtx.getImageData(0, 0, WIDTH, HEIGHT)
 
   // 画像処理
-  //threshold(imageData.data, 100)
-	reversal(imageData.data)
+  for (let eff of effects) eff(imageData.data)
 
   ctx.save()
   ctx.globalAlpha = 1
@@ -61,6 +59,7 @@ let loop = () => {
   ctx.restore();
   requestAnimationFrame(loop)
 }
+
 window.onload = () => {
 	loop()
 };

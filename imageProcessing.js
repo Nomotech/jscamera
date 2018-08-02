@@ -6,6 +6,10 @@
 // see https://opensource.org/licenses/MIT
 // ============================================
 
+let buttonArea = document.getElementById('buttonArea')
+let effectsList = document.getElementById('effectsList')
+let effects = []
+
 // -------------------------< Image processing >-------------------------
 // 画像の二値化 data ... image data t ... threshold
 let threshold = (data, t) => {
@@ -21,7 +25,14 @@ let threshold = (data, t) => {
     }
   }
 }
+addButton('threshold', buttonArea, () => {
+  addEffect('threshold', effectsList)
+  effects.push((data) => threshold(data, 100))
+})
 
+
+
+// ネガポジ反転
 let reversal = (data) => {
   for(let y = 0; y < HEIGHT; y++) {
     for(let x = 0; x < WIDTH; x++) {
@@ -35,3 +46,7 @@ let reversal = (data) => {
     }
   }
 }
+addButton('reversal', buttonArea, () => {
+  addEffect('reversal', effectsList)
+  effects.push((data) => reversal(data))
+})
